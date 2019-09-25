@@ -50,12 +50,18 @@ public class Vector2 {
  * @param z
  * @return Math.sqrt(newX+newY);
  */
-	public double distance (Vector2 z) {
+	public double magnitude (Vector2 z) {
 		double newX = Math.pow((this.x-z.x),2);
 		double newY = Math.pow((this.y-z.y),2);
-		return Math.sqrt(newX+newY);
+		this.magnitude=Math.sqrt(newX+newY);
+		return this.magnitude;
 	}
 	
+	public Vector2 middlePoint(Vector2 v2){
+		  double newX= (this.x-v2.getX())/2;
+		  double newY= (this.y-v2.getY())/2;
+		   return new Vector2(newX,newY);
+		  }
 /**
  * Method toSVG
  * @return String with html code

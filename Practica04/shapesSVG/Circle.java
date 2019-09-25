@@ -82,4 +82,14 @@ public class Circle {
 	public boolean equals(Circle c) {
 		return this.center.equals(c.getCenter()) && this.radius==c.getRadius();
 	}
+	
+	public double area(){
+	    this.area=Math.pow(Math.PI*this.radius,2);
+	    return this.area;
+	  }
+	  
+	  public double perimeter(){
+	    this.perimeter=2*this.radius*Math.PI;
+	    return this.perimeter;
+	  }
 }

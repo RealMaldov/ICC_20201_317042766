@@ -96,4 +96,14 @@ public class Rectangle {
 	public boolean equals(Rectangle r) {
 		return this.v1.equals(r.getV1())&& this.height==r.getHeight()&& this.width==r.getWidth();
 	}
+	
+	public double area() {
+		this.area=this.width*this.height;
+		return this.area;
+	}
+	
+	public double perimeter() {
+		this.perimeter=this.width*2+this.height*2;
+		return this.perimeter;
+	}
 }

@@ -71,4 +71,9 @@ public class Line {
 	public boolean equals(Line l) {
 		return v1.equals(l.getV1()) && v2.equals(l.getV2());
 	}
+	
+	public double length (Vector2 v2) {
+		this.length=this.v1.magnitude(v2);
+		return this.length;
+	}
 }
