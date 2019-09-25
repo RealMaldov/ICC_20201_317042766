@@ -98,11 +98,19 @@ public class Triangle {
 		return this.v1.equals(t.getV1()) && this.v2.equals(t.getV2())&& this.v3.equals(t.getV3());
 	}
 	
+/**
+ * Method area
+ * @return this.area
+ */
 	public double area() {
 		this.area=(this.v1.magnitude(v2)*(this.v1.middlePoint(v2).magnitude(v3)))/2;
 		return this.area;
 	}
 	
+/**
+ * Method perimeter 
+ * @return this.perimeter
+ */
 	  public double perimeter(){    
 		this.perimeter=this.v1.magnitude(v2)+this.v2.magnitude(v3)+this.v3.magnitude(v1);
 		return this.perimeter;  

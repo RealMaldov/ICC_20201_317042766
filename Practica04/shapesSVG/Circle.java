@@ -83,11 +83,19 @@ public class Circle {
 		return this.center.equals(c.getCenter()) && this.radius==c.getRadius();
 	}
 	
+/**
+ * Method area
+ * @return this.area
+ */
 	public double area(){
 	    this.area=Math.pow(Math.PI*this.radius,2);
 	    return this.area;
 	  }
 	  
+/**
+ * Method perimeter
+ * @return this.perimeter
+ */
 	  public double perimeter(){
 	    this.perimeter=2*this.radius*Math.PI;
 	    return this.perimeter;

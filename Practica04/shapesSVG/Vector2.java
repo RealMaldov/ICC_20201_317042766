@@ -46,9 +46,9 @@ public class Vector2 {
 	}
 	
 /**
- * Method distance
+ * Method magnitude
  * @param z
- * @return Math.sqrt(newX+newY);
+ * @return this.magnitude
  */
 	public double magnitude (Vector2 z) {
 		double newX = Math.pow((this.x-z.x),2);
@@ -57,6 +57,11 @@ public class Vector2 {
 		return this.magnitude;
 	}
 	
+/**
+ * Method middlePoint 	
+ * @param v2
+ * @return new Vector2(newX,newY);
+ */
 	public Vector2 middlePoint(Vector2 v2){
 		  double newX= (this.x-v2.getX())/2;
 		  double newY= (this.y-v2.getY())/2;

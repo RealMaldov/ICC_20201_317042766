@@ -97,11 +97,19 @@ public class Rectangle {
 		return this.v1.equals(r.getV1())&& this.height==r.getHeight()&& this.width==r.getWidth();
 	}
 	
+/**
+ * Method area
+ * @return this.area
+ */
 	public double area() {
 		this.area=this.width*this.height;
 		return this.area;
 	}
 	
+/**
+ * Method perimeter
+ * @return this.perimeter
+ */
 	public double perimeter() {
 		this.perimeter=this.width*2+this.height*2;
 		return this.perimeter;
