@@ -1,20 +1,20 @@
 /**
- * 
+ *
  */
-import shapesSVG.Circulo;
-import shapesSVG.Linea;
-import shapesSVG.Rectangulo;
-import shapesSVG.Triangulo;
-import shapesSVG.Vector2;
+ import shapesSVG.Circle;
+ import shapesSVG.Line;
+ import shapesSVG.Rectangle;
+ import shapesSVG.Triangle;
+ import shapesSVG.Vector2;
 
 /**
- * @author Alejandro Maldonado Vázquez
+ * @author Alejandro Maldonado Vï¿½zquez
  * Main Class
  */
 public class Main {
 	public static void main(String[] args) {
 		String start= "<svg heigth='700' width='700'>";
-		String close="</svg>";	
+		String close="</svg>";
 //Instance of shapes
 	Vector2 zero= new Vector2(300.0,100.0);
 	Vector2 zeroTwo= new Vector2(100.0,100.0);
