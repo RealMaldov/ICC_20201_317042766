@@ -1,3 +1,6 @@
+/**
+ * @author Alejandro Maldonado Vázquez
+ */
 package chess.pieces.chessPieces;
 
 import java.util.LinkedList;
@@ -8,16 +11,15 @@ import chess.pieces.ColorEnum;
 import chess.pieces.Piece;
 import chess.pieces.PiecesTypeEnum;
 
-/* Clase para la pieza Caballo que extiende de la clase abstracta Pieza*/
+// Class of the king piece
 public class King extends Piece{
 
-  /* Constructor para la clase Caballo*/
   public King(Position p, ColorEnum color){
     super(p, color);
     this.type = PiecesTypeEnum.KING;
 
   }
-  /* Método para verificar si una pieza se agrega a la lista o no*/
+  //Its easier to verify each move for this piece
   public void verifyMoves(Position position, List<Position> l ){
     Board board = Board.getInstance();
     if(position.isOutOfBoard(board.getSize())){
@@ -29,11 +31,8 @@ public class King extends Piece{
     }
     return;
   }
-/*this.movimientosLegales = new LinkedList<Posicion>();
-      Posicion uno = new Posicion(this.posicion.getX()-2, this.posicion.getY()+1);
-      this.verificar(uno, movimientosLegales); */
 
-  /* ALGORITMO PRINCIPAL PARA CADA PIEZA */
+  /* The king does not posses many moves so its easier to instance each one of them */
   public List<Position> getLegalMoves(){
     if(this.legalMoves == null){
 
@@ -67,16 +66,17 @@ public class King extends Piece{
     return this.legalMoves;
   }
 
+  /**
+    * Special method equals
+    */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof King))
+            return false;
 
-  /** Método equals para la pieza de la caballo
-  * @param : Object Caballo
-  **//*
-  @Override
-  public boolean equals(Object obj){
-    if(!(obj instanceof Horse)) return false;
-    @SuppressWarnings("unchecked") Caballo pieza = (Caballo) obj;
-    if(pieza.getColor() == this.getColor() && this.getPosicion().equals(pieza.getPosicion())) return true;
-    else return false;
-  }*/
+        King t = (King) obj;
+        return (t.getColor() == this.getColor() && this.getPosition().equals(t.getPosition())) ? true : false;
+
+    }
 
 }

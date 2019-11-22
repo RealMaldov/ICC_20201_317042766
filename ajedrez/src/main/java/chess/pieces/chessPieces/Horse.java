@@ -1,3 +1,6 @@
+/**
+ * @author Alejandro Maldonado Vázquez
+ */
 package chess.pieces.chessPieces;
 
 import java.util.LinkedList;
@@ -8,16 +11,16 @@ import chess.pieces.ColorEnum;
 import chess.pieces.Piece;
 import chess.pieces.PiecesTypeEnum;
 
-/* Clase para la pieza Caballo que extiende de la clase abstracta Pieza*/
+//Class for the horse piece
 public class Horse extends Piece{
 
-  /* Constructor para la clase Caballo*/
+
   public Horse(Position p, ColorEnum color){
     super(p, color);
     this.type = PiecesTypeEnum.HORSE;
 
   }
-  /* Método para verificar si una pieza se agrega a la lista o no*/
+  //Like the king piece, this method verifies each move for the horse piece
   public void verifyMoves(Position position, List<Position> l ){
     Board board = Board.getInstance();
     if(position.isOutOfBoard(board.getSize())){
@@ -29,11 +32,8 @@ public class Horse extends Piece{
     }
     return;
   }
-/*this.movimientosLegales = new LinkedList<Posicion>();
-      Posicion uno = new Posicion(this.posicion.getX()-2, this.posicion.getY()+1);
-      this.verificar(uno, movimientosLegales); */
 
-  /* ALGORITMO PRINCIPAL PARA CADA PIEZA */
+  //Like the king, its easier to instance each move
   public List<Position> getLegalMoves(){
     if(this.legalMoves == null){
 
@@ -67,16 +67,16 @@ public class Horse extends Piece{
     return this.legalMoves;
   }
 
+  /**
+    * Special method equals
+    */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Horse))
+            return false;
 
-  /** Método equals para la pieza de la caballo
-  * @param : Object Caballo
-  **//*
-  @Override
-  public boolean equals(Object obj){
-    if(!(obj instanceof Horse)) return false;
-    @SuppressWarnings("unchecked") Caballo pieza = (Caballo) obj;
-    if(pieza.getColor() == this.getColor() && this.getPosicion().equals(pieza.getPosicion())) return true;
-    else return false;
-  }*/
+        Horse t = (Horse) obj;
+        return (t.getColor() == this.getColor() && this.getPosition().equals(t.getPosition())) ? true : false;
 
+    }
 }

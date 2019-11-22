@@ -1,3 +1,6 @@
+/**
+ * @author Alejandro Maldonado Vázquez
+ */
 package chess.pieces.chessPieces;
 
 import chess.items.Board;
@@ -8,30 +11,19 @@ import chess.pieces.PiecesTypeEnum;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Queem class that extends Rook class
- */
+// class for the queen piece that extends Rook class instead of the piece class
 public class Queen extends Rook {
-    /**
-     * Queen constructor
-     * 
-     * @param p     - Position where the piece is
-     * @param color - The color the piece has
-     */
+   
     public Queen(Position p, ColorEnum color) {
         super(p, color);
         this.type = PiecesTypeEnum.QUEEN;
     }
 
-    /**
-     * Method that specifies the legalMoves that the piece can do during the game
-     * 
-     * @return LinkedList - The list of availibles moves that the piece can do
-     */
+   //Method that includes the moves for the bishop and the rook
     @Override
     public List<Position> getLegalMoves() {
         Board board = Board.getInstance();
-        this.legalMoves = super.getLegalMoves();
+        this.legalMoves =new LinkedList<Position>(super.getLegalMoves());
         for (int i = this.position.getX() + 1, j = this.position.getY() + 1; i < 8 && j < 8; i++, j++) {
             Position nextLegalPosition = new Position(i, j);
             Piece piece = board.getPiece(nextLegalPosition);
@@ -80,12 +72,9 @@ public class Queen extends Rook {
         return this.legalMoves;
     }
 
-    /**
-     * Method that verifies if a Queen is equal to another
-     * 
-     * @param obj - The other Queen that is going to be compared
-     * @return boolean - true in case the 2 Queens are equal, false in other case
-     */
+   /**
+    * Special method equals
+    */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Queen))

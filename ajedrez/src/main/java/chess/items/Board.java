@@ -1,3 +1,6 @@
+/**
+ * @author Alejandro Maldonado Vázquez
+ */
 package chess.items;
 import chess.pieces.ColorEnum;
 import chess.pieces.Piece;
@@ -8,6 +11,7 @@ import chess.pieces.chessPieces.Queen;
 import chess.pieces.chessPieces.King;
 import chess.pieces.chessPieces.Horse;
 import chess.pieces.chessPieces.Bishop;
+
 
 public class Board{
     public int SIZE = 8;
@@ -20,6 +24,7 @@ public class Board{
                 this.matrix[i][j] = new Empty(new Position(i, j), ColorEnum.NONE);
             }
         }
+        //This creates the pieces for the white side
         this.matrix[0][1] = new Pawn (new Position(0, 1), ColorEnum.WHITE);
         this.matrix[1][1] = new Pawn (new Position(1, 1), ColorEnum.WHITE);
         this.matrix[2][1] = new Pawn (new Position(2, 1), ColorEnum.WHITE);
@@ -36,7 +41,7 @@ public class Board{
         this.matrix[5][0] = new Bishop(new Position(5, 0), ColorEnum.WHITE);
         this.matrix[4][0] = new King(new Position(4, 0), ColorEnum.WHITE);
         this.matrix[3][0] = new Queen(new Position(3, 0), ColorEnum.WHITE);
-       
+        //This creates the pieces for the black side
         this.matrix[0][6] = new Pawn (new Position(0, 6), ColorEnum.BLACK);
         this.matrix[1][6] = new Pawn (new Position(1, 6), ColorEnum.BLACK);
         this.matrix[2][6] = new Pawn (new Position(2, 6), ColorEnum.BLACK);
@@ -56,16 +61,29 @@ public class Board{
         
     }
 
+    /**
+     * Getter getInstance
+     * @return instance
+     */
     public static Board getInstance(){
         if(instance == null)
             instance = new Board();
         return instance;
     }
 
+    /**
+     * Getter getSize
+     * @return this.size
+     */
     public int getSize(){
         return this.SIZE;
     }
 
+    /**
+     * Method that verifies if a piece can move
+     * @param p
+     * @param q
+     */
     public void move(Position p, Position q){
         if(!p.isLegal() || !q.isLegal())return;
         Piece piece = this.getPiece(p);
@@ -75,12 +93,20 @@ public class Board{
         this.matrix[q.getX()][q.getY()] = piece; 
     }
 
+    /**
+     * Getter getPiece
+     * @param p
+     * @return the instance of a piece
+     */
     public Piece getPiece(Position p){
         //if(p.isOutOfBoard(SIZE))return null;
         return this.matrix[p.getX()][p.getY()];
     }
 
 
+    /**
+     * Special Method toString
+     */
     public String toString(){
         var result = "";
         for (int i = 0; i < SIZE; i++) {

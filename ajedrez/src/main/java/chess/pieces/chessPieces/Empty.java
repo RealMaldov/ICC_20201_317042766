@@ -1,3 +1,6 @@
+/**
+* @author Alejandro Maldonado Vázquez
+*/
 package chess.pieces.chessPieces;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,6 +10,8 @@ import chess.pieces.ColorEnum;
 import chess.pieces.Piece;
 import chess.pieces.PiecesTypeEnum;
 public class Empty extends Piece{
+
+    //A class for an Empty piece, it inherits the piece attributes
     public Empty(Position p, ColorEnum c){
         super(p,c);
         this.type = PiecesTypeEnum.EMPTY;

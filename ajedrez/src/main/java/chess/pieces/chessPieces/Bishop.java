@@ -1,3 +1,6 @@
+/**
+* @author Alejandro Maldonado Vázquez
+*/
 package chess.pieces.chessPieces;
 
 import chess.items.Board;
@@ -8,26 +11,17 @@ import chess.pieces.PiecesTypeEnum;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Bishop class that extends the Piece class
- */
+
+ // Class for the bishop piece
+ 
 public class Bishop extends Piece {
-    /**
-     * Bishop constructor
-     * 
-     * @param p     - Position where the piece is
-     * @param color - The color the piece has
-     */
+
     public Bishop(Position p, ColorEnum color) {
         super(p, color);
         this.type = PiecesTypeEnum.BISHOP;
     }
 
-    /**
-     * Method that specifies the legalMoves that the piece can do during the game
-     * 
-     * @return LinkedList - The list of availibles moves that the piece can do
-     */
+   //Like the rook, this method calculates the next moves
     public List<Position> getLegalMoves() {
         Board board = Board.getInstance();
         this.legalMoves = new LinkedList<Position>();
@@ -79,10 +73,7 @@ public class Bishop extends Piece {
     }
 
     /**
-     * Method that verifies if a Bishop is equal to another
-     * 
-     * @param obj - The other Bishop that is going to be compared
-     * @return boolean - true in case the 2 Bishops are equal, false in other case
+     * Special Method equals
      */
     @Override
     public boolean equals(Object obj) {

@@ -1,3 +1,6 @@
+/**
+ * @author Alejandro Maldonado Vázquez
+ */
 package gui;
 
 import java.util.LinkedList;
@@ -10,6 +13,7 @@ import chess.pieces.Piece;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+//Class with all the necessary grafics for the game
 public class ChessGUI extends PApplet {
     Position selected = null;
     ColorEnum turn = ColorEnum.WHITE;
@@ -30,16 +34,18 @@ public class ChessGUI extends PApplet {
     PImage black_bishop;
     PImage white_bishop;
 
-
+//Main clas that starts the graphic functions for the game
     public static void main(String[] args) {
         PApplet.main("gui.ChessGUI");
     }
 
+    //Size of the gui
     @Override
     public void settings() {
         size(400, 440);
     }
 
+    //Method that loads the images
     @Override
     public void setup() {
         // legalMoves = board.getPiece(new Position(4,4)).getLegalMoves();
@@ -58,6 +64,7 @@ public class ChessGUI extends PApplet {
         white_bishop = loadImage(getClass().getResource("/white-bishop-50.png").getPath());
     }
 
+    //Funcions that calls all the drawing functions
     @Override
     public void draw() {
         drawBoard();
@@ -65,6 +72,7 @@ public class ChessGUI extends PApplet {
         writeTurn();
     }
 
+    //Method that writes the turn
     public void writeTurn() {
         fill(255, 255, 255);
         rect(0,400,400,40);
@@ -73,6 +81,7 @@ public class ChessGUI extends PApplet {
         text(turn.toString().toLowerCase()+" moves", 30, 430);
     }
 
+    //Function that draws the possible moves calling calculator methods
     public void drawPosibleMoves() {
         stroke(255, 0, 0);
         fill(0, 0, 0, 100);
@@ -84,19 +93,20 @@ public class ChessGUI extends PApplet {
         stroke(0, 0, 0);
     }
 
+    //Function that draws the board
     public void drawBoard() {
         for (int i = 0; i < board.getSize(); i++) {
             for (int j = 0; j < board.getSize(); j++) {
                 if (i % 2 == 0) {
                     if (j % 2 == 0)
-                        fill(99,221, 99);
+                        fill(255,15, 150);
                     else
                         fill(255, 255, 255);
                 } else {
                     if (j % 2 == 0)
                         fill(255, 255, 255);
                     else
-                        fill(99,221, 99);
+                        fill(255,15, 150);
                 }
                 rect(i * PIXEL_SIZE, j * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
                 Piece p = board.getPiece(new Position(i, j));
@@ -105,6 +115,7 @@ public class ChessGUI extends PApplet {
         }
     }
 
+    //Function that draws each piece with their respective image
     public void drawPiece(Piece p) {
         int x = p.getPosition().getX();
         int y = p.getPosition().getY();
@@ -152,6 +163,7 @@ public class ChessGUI extends PApplet {
         }
     }
 
+    //Method that Shows a selected square
     @Override
     public void mouseClicked() {
         int x = mouseX / PIXEL_SIZE;
@@ -183,9 +195,9 @@ public class ChessGUI extends PApplet {
         }
 
         this.legalMoves = new LinkedList<>();
-
-        System.out.println(x);
-        System.out.println(y);
+        System.out.println("Pieza en coord:");
+        System.out.println("X: "+ x);
+        System.out.println("Y: "+y);
     }
 
 }

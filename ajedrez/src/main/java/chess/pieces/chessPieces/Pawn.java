@@ -1,3 +1,6 @@
+/**
+ * @author Alejandro Maldonado Vázquez
+ */
 package chess.pieces.chessPieces;
 
 import java.util.LinkedList;
@@ -6,27 +9,37 @@ import chess.items.Position;
 import chess.pieces.ColorEnum;
 import chess.pieces.Piece;
 import chess.pieces.PiecesTypeEnum;
-import chess.pieces.chessPieces.Queen;
 
+/**
+ * CLass of the Pawn piece
+ */
 public class Pawn extends Piece {
 
-    public Piece[][] matrix;
+    //We call de parents constructor and make the Pawn one
     public Pawn (Position p, ColorEnum color){
         super(p,color);
         this.type= PiecesTypeEnum.PAWN;
     }
 
+    //This is where all the fun is
     @Override
     public List<Position> getLegalMoves() {
         this.legalMoves = new LinkedList<Position>();
         
+        //Side of the function for the white side
         if(this.getColor()== ColorEnum.WHITE){
         int currentX=this.position.getX();
         Position check = new Position(currentX,this.position.getY()+1); 
         Position check2 = new Position(currentX-1,this.position.getY()+1); 
         Position check3 = new Position(currentX+1,this.position.getY()+1); 
+        
+        //Cases for the normal pawns and the ones in the edge
+        //its exactly like the ones below
         switch(currentX){
             case 0:
+            if(this.position.getY()<7){
+            //if one piece is in the front it considers this for the next moves, it also considers the board
+            //its exactly like the ones below
             if (this.isAppendable(check) == 0 || this.isAppendable(check3) == 0){
                 if(this.isAppendable(check)==0)
                 {
@@ -37,9 +50,11 @@ public class Pawn extends Piece {
                         Position nextLegalPosition = check3; 
                         this.legalMoves.add(nextLegalPosition);}
             }
-
+        }
         int currentY0=this.position.getY();
          
+        //It calculates the next move considering the board
+        //its exactly like the ones below
         if(currentY0<7&&this.isAppendable(check)!=0){
             if(getExtra()==0){
                 for(int i=0;i<2;i++){
@@ -65,6 +80,7 @@ public class Pawn extends Piece {
               
         return this.legalMoves;
             case 7:
+            if(this.position.getY()<7){
             if (this.isAppendable(check) == 0 || this.isAppendable(check2) == 0){
                 if(this.isAppendable(check)==0)
                 {
@@ -75,7 +91,7 @@ public class Pawn extends Piece {
                         Position nextLegalPosition = check2; 
                         this.legalMoves.add(nextLegalPosition);}
                 }
-
+            }
         int currentY7=this.position.getY();
          
         if(currentY7<7&&this.isAppendable(check)!=0){
@@ -161,6 +177,7 @@ public class Pawn extends Piece {
         }
         }
 
+        //Side of the function made for the black side
         else{
             int currentX=this.position.getX();
         Position check = new Position(currentX,this.position.getY()-1); 
@@ -168,6 +185,7 @@ public class Pawn extends Piece {
         Position check3 = new Position(currentX+1,this.position.getY()-1); 
         switch(currentX){
             case 0:
+            if(this.position.getY()<7){
             if (this.isAppendable(check) == 0 || this.isAppendable(check3) == 0 ){
 
                 System.out.println("Check: "+this.isAppendable(check));
@@ -185,7 +203,7 @@ public class Pawn extends Piece {
                         Position nextLegalPosition = check3; 
                         this.legalMoves.add(nextLegalPosition);}
             }
-
+        }
         int currentY0=this.position.getY();
          
         if(currentY0<7&&this.isAppendable(check)!=0){
@@ -213,6 +231,7 @@ public class Pawn extends Piece {
               
         return this.legalMoves;
             case 7:
+            if(this.position.getY()<7){
             if (this.isAppendable(check) == 0 || this.isAppendable(check2) == 0){
                 if(this.isAppendable(check)==0)
                 {
@@ -224,7 +243,7 @@ public class Pawn extends Piece {
                         this.legalMoves.add(nextLegalPosition);}
                 }
             
-
+            }
         int currentY7=this.position.getY();
          
         if(currentY7<7&&this.isAppendable(check)!=0){
@@ -251,6 +270,7 @@ public class Pawn extends Piece {
         }}  
         return this.legalMoves;
             default:
+            if(this.position.getY()<7){
             if (this.isAppendable(check) == 0 || this.isAppendable(check2) == 0 || this.isAppendable(check3) == 0){
                 if(this.isAppendable(check)==0)
                 {
@@ -271,7 +291,7 @@ public class Pawn extends Piece {
                     this.legalMoves.add(nextLegalPosition2);}
             }
         }
-
+        }
         int currentY=this.position.getY();
          
         if(currentY<7&&this.isAppendable(check)!=0){
@@ -301,5 +321,18 @@ public class Pawn extends Piece {
         
         }
         }
+    }
+
+    /**
+    * Special method equals
+    */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Pawn))
+            return false;
+
+        Pawn t = (Pawn) obj;
+        return (t.getColor() == this.getColor() && this.getPosition().equals(t.getPosition())) ? true : false;
+
     }
 }
