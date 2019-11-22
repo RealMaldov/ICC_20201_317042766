@@ -4,10 +4,10 @@
 package shapesSVG;
 
 /**
- * @author Alejandro Maldonado Vázquez
+ * @author Alejandro Maldonado Vï¿½zquez
  *
  */
-public class Rectangle {
+public class Rectangle extends Shape{
 	
 	private Vector2 v1;
 	private double width;

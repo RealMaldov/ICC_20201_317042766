@@ -1,11 +1,11 @@
 package shapesSVG;
 
 /**
- * @author Alejandro Maldonado Vázquez
+ * @author Alejandro Maldonado Vï¿½zquez
  * Class Vector2
  */
 
-public class Vector2 {
+public class Vector2 extends Shape{
 
 	private double x;
 	private double y;

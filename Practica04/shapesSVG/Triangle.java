@@ -7,7 +7,7 @@ package shapesSVG;
  * @author A.Maldov
  *
  */
-public class Triangle {
+public class Triangle extends Shape implements Transform{
 	private Vector2 v1;
 	private Vector2 v2;
 	private Vector2 v3;
@@ -115,4 +115,10 @@ public class Triangle {
 		this.perimeter=this.v1.magnitude(v2)+this.v2.magnitude(v3)+this.v3.magnitude(v1);
 		return this.perimeter;  
 	  }
+
+	  public void transform(Transform x){
+        this.v1 = x.transform(this.v1);
+        this.v2 = x.transform(this.v2);
+        this.v3 = x.transform(this.v3);
+  }
 }

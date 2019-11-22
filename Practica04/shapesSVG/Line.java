@@ -4,10 +4,10 @@
 package shapesSVG;
 
 /**
- * @author Alejandro Maldonado Vázquez
+ * @author Alejandro Maldonado Vï¿½zquez
  * Class Line
  */
-public class Line {
+public class Line extends Shape{
 
 	private Vector2 v1;
 	private Vector2 v2;

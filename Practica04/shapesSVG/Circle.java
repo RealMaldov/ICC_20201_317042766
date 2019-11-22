@@ -1,13 +1,11 @@
-/**
- * 
- */
+
 package shapesSVG;
 
 /**
- * @author Alejandro Maldonado Vázquez 
+ * @author Alejandro Maldonado Vï¿½zquez 
  * Class Circle
  */
-public class Circle {
+public class Circle extends Shape{
 
 	private Vector2 center;
 	private double radius;

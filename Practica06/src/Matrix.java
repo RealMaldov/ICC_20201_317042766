@@ -1,7 +1,9 @@
 /**
  * @author Alejandro Maldonado V.
  */
-public class Matrix{
+import java.util.Iterator;
+
+public class Matrix implements Iterable <Double>{
 
     private double matrix[][];
 
@@ -146,5 +148,48 @@ public class Matrix{
         return true;
     }
         return false;
+    }
+
+@Override
+//Method that returns a matrix iterator
+    public Iterator <Double> iterator() {    
+        return new MatrixIterator();
+    }
+    
+    //Iterator class
+    private class MatrixIterator implements Iterator <Double>{
+    private int col=1;
+    private int ren= 0; 
+
+
+    private boolean hasNextColumn(){    
+        return (col < matrix[0].length-1)?true:false;
+    }
+
+    private boolean hasNextRen(){    
+        return (ren < matrix.length-1)?true:false;
+      }
+
+    public boolean hasNext(){
+        if (this.hasNextColumn()){
+            return true;
+        }else return (this.hasNextRen())?true:false;
+    }
+   
+    //Method that gives back an iterated matrix
+     @Override
+     public Double next(){
+        if (hasNext()){
+            if(hasNextColumn()){
+                col++;
+            }
+            else{col=0;
+            if(hasNextRen()){
+                ren++;
+            }}
+            return Matrix.this.matrix[this.ren][this.col];
+        }
+        return null;
+      }
     }
 }
